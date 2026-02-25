@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --plum:       #7B2D6E;
+  --plum-deep:  #5A1F50;
+  --plum-dark:  #3D1238;
+  --plum-light: #A84090;
+  --plum-mist:  #F0DCF0;
+  --ink:        #1A0A17;
+  --ivory:      #FDF8FC;
+  --petal:      #F8EEF6;
+  --blush:      #F2D9ED;
+  --ash:        #C4B0BF;
+  --smoke:      #8B7A87;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--ivory);
+  color: var(--ink);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--ivory); }
+::-webkit-scrollbar-thumb { background: var(--plum); border-radius: 2px; }
+
+/* Number input */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
+input[type=number] { -moz-appearance: textfield; }
+
+/* Scroll lock */
+.scroll-locked { overflow: hidden; }
+
+/* ── Hairline divider ── */
+.divider-plum {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(123,45,110,0.25), transparent);
+}
+
+/* ── Noise grain texture overlay ── */
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.022;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ── Plum section ── */
+.section-plum {
+  background-color: var(--plum-dark);
+  color: var(--ivory);
+}
+
+/* ── Editorial pull-quote style ── */
+.pull-quote {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--plum);
+}
+
+/* ── Nav link underline ── */
+.nav-link {
+  position: relative;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  transition: color 0.25s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0;
+  width: 0; height: 1px;
+  background: var(--plum);
+  transition: width 0.35s ease;
+}
+.nav-link:hover { color: var(--plum); }
+.nav-link:hover::after { width: 100%; }
+
+/* ── Product card hover lift ── */
+.product-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(123,45,110,0.12);
+}
+
+/* ── Service card ── */
+.svc-reveal {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.45s ease, opacity 0.4s ease;
+}
+.group:hover .svc-reveal {
+  max-height: 90px;
+  opacity: 1;
+}
+.svc-bar {
+  width: 24px; height: 1.5px;
+  background: rgba(253,248,252,0.5);
+  transition: width 0.4s ease;
+}
+.group:hover .svc-bar { width: 48px; }
+
+/* ── Featured strip hover ── */
+.feat-bar {
+  width: 32px; height: 1px;
+  background: #FDF8FC;
+  transition: width 0.4s ease;
+}
+.group:hover .feat-bar { width: 60px; }
+
+/* ── Btn primary ── */
+.btn-plum {
+  background: var(--plum);
+  color: var(--ivory);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.25s, box-shadow 0.3s;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+.btn-plum:hover {
+  background: var(--plum-light);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(123,45,110,0.3);
+}
+
+/* ── Btn outline ── */
+.btn-outline {
+  background: transparent;
+  color: var(--plum);
+  border: 1.5px solid var(--plum);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 13px 36px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+.btn-outline:hover {
+  background: var(--plum);
+  color: var(--ivory);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(123,45,110,0.2);
+}
+
+/* ── Btn outline ivory (on dark bg) ── */
+.btn-outline-ivory {
+  background: transparent;
+  color: var(--ivory);
+  border: 1.5px solid rgba(253,248,252,0.5);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 13px 36px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+.btn-outline-ivory:hover {
+  background: rgba(253,248,252,0.1);
+  border-color: var(--ivory);
+  transform: translateY(-2px);
+}
+
+/* ── Input ── */
+.field-input {
+  width: 100%;
+  background: white;
+  border: 1.5px solid var(--blush);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  padding: 13px 16px;
+  outline: none;
+  transition: border-color 0.25s;
+  border-radius: 0;
+}
+.field-input::placeholder { color: var(--ash); }
+.field-input:focus { border-color: var(--plum); }
+
+/* ── Section eyebrow ── */
+.eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--plum);
+}
+
+/* ── Mob nav link ── */
+.mob-a {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ivory);
+  font-size: clamp(34px, 7vw, 52px);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(253,248,252,0.08);
+  width: 100%;
+  transition: color 0.2s, padding-left 0.3s;
+}
+.mob-a:hover { color: var(--plum-soft, #C470B0); padding-left: 10px; }
