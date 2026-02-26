@@ -67,7 +67,7 @@ export default function About() {
         </div>
 
         {/* ── Bottom: secondary photo strip ── */}
-        <div className="grid grid-cols-3 h-200 md:h-[300px]">
+        <div className="grid grid-cols-3 h-[300px]">
           <div className="relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?w=600&q=80&fit=crop"
               alt="Extensions" className="w-full h-full object-cover"
