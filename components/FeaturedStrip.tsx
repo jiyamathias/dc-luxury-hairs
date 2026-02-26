@@ -1,5 +1,5 @@
 "use client";
-import { scrollToSection } from "@/lib/utils";
+import { scrollTo } from "@/lib/utils";
 
 const FEATURES = [
   {
@@ -31,7 +31,7 @@ export default function FeaturedStrip() {
       {FEATURES.map((f) => (
         <button
           key={f.title}
-          onClick={() => scrollToSection(f.section)}
+          onClick={() => scrollTo(f.section)}
           className="group relative overflow-hidden h-[280px] md:h-[420px] text-left w-full"
         >
           <img
