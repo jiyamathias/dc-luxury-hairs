@@ -15,7 +15,7 @@ function ProductCard({ p }: { p: Product }) {
     setTimeout(() => setAdded(false), 1800);
   };
 
-  const bc = p.badge ? BADGE_COLORS[p.badge]?.bg : null;
+  const bc = p.badge ? BADGE_COLORS[p.badge] : null;
 
   return (
     <div className="product-card bg-white group flex flex-col overflow-hidden">
