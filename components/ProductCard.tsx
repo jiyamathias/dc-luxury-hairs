@@ -31,7 +31,7 @@ export default function ProductCard({ product }: { product: Product }) {
         {product.badge && (
           <div
             className="absolute top-3.5 left-3.5 font-sans font-extrabold tracking-[0.2em] uppercase text-white text-[8px] px-2.5 py-1"
-            style={{ background: BADGE_COLORS[product.badge] || "#9a7520" }}
+            style={{ background: BADGE_COLORS[product.badge]?.bg || "#9a7520" }}
           >
             {product.badge}
           </div>
